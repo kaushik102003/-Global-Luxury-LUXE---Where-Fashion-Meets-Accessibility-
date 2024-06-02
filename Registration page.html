@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Culinary Chronicles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px; /* Added padding */
+            background-color: #1c1c1c; /* Dark background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #ecf0f1; /* Light text color */
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px; /* Added padding */
+        }
+
+        .art-box {
+            background-color: #333; /* Darker grey background */
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px; /* Added margin */
+        }
+
+        h2 {
+            text-align: center;
+            color: #ecf0f1;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-bottom: 8px;
+            color: #bdc3c7;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #7f8c8d;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+            background-color: #2c3e50;
+            color: #ecf0f1;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+            color: #bdc3c7;
+        }
+
+        .phone-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .phone-group select {
+            padding: 10px;
+            border: 1px solid #7f8c8d;
+            border-radius: 5px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #27ae60; /* Green button */
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #229954;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .social-buttons a {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #fff;
+            margin: 0 5px; /* Equal margin on left and right */
+            transition: background-color 0.3s;
+        }
+
+        .social-buttons a.google {
+            background-color: #db4437;
+        }
+
+        .social-buttons a.facebook {
+            background-color: #3b5998;
+        }
+
+        .social-buttons a.twitter {
+            background-color: #1da1f2;
+        }
+
+        .social-buttons a:hover {
+            opacity: 0.8;
+        }
+
+        p {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="art-box">
+            <h2>Join Culinary Chronicles</h2>
+            <form action="signup.php" method="post">
+                <label for="username">Username:</label>
+                <div class="input-group">
+                    <input type="text" id="username" name="username" required>
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <label for="first_name">First Name:</label>
+                <div class="input-group">
+                    <input type="text" id="first_name" name="first_name" required>
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <label for="last_name">Last Name:</label>
+                <div class="input-group">
+                    <input type="text" id="last_name" name="last_name" required>
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <label for="email">Email:</label>
+                <div class="input-group">
+                    <input type="email" id="email" name="email" required>
+                    <i class="fas fa-envelope"></i>
+                </div>
+
+                <label for="phone">Phone Number:</label>
+                <div class="phone-group">
+                    <select id="country_code" name="country_code" required>
+                        <option value="+1">+1</option>
+                        <option value="+44">+44</option>
+                        <option value="+91">+91</option>
+                        <!-- Add more country codes as needed -->
+                    </select>
+                    <div class="input-group">
+                        <input type="tel" id="phone" name="phone" required>
+                        <i class="fas fa-phone"></i>
+                    </div>
+                </div>
+
+                <label for="password">Password:</label>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" required>
+                    <i class="fas fa-lock"></i>
+                </div>
+
+                <label for="confirm_password">Confirm Password:</label>
+                <div class="input-group">
+                    <input type="password" id="confirm_password" name="confirm_password" required>
+                    <i class="fas fa-lock"></i>
+                </div>
+
+                <button type="submit">Register</button>
+
+                <div class="social-buttons">
+                    <a href="#" class="google"><i class="fab fa-google"></i> Google</a>
+                    <a href="#" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    <a href="#" class="twitter"><i class="fab fa-twitter"></i> Twitter</a>
+                </div>
+
+                <p>Already have an account? <a href="Loginpage.html">Sign in</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
