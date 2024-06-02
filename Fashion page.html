@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion - Culinary Chronicles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+        nav {
+            text-align: center;
+            padding: 10px;
+            background-color: #444;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .filter-options {
+            margin-bottom: 20px;
+        }
+        label {
+            margin-right: 15px;
+        }
+        .item-section {
+            margin-bottom: 20px;
+        }
+        .item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            position: relative;
+            cursor: pointer;
+        }
+        .item img {
+            max-width: 100%;
+            height: auto;
+        }
+        .item-details {
+            text-align: center;
+        }
+        .selected-items {
+            background-color: #444;
+            color: #fff;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .add-to-cart-btn {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fashion - Culinary Chronicles</h1>
+    </header>
+    <nav>
+        <a href="Home page.html">Home</a>
+        <a href="Fashion page.html">Fashion</a>
+        <a href="Add to cart page.html">Add to Cart</a>
+        <a href="Help page.html">Help</a>
+    </nav>
+    <div class="container">
+        <h2>Fashion</h2>
+        <div class="filter-options">
+            <label>
+                <input type="checkbox" id="shirtsFilter" onchange="filterItems('shirts')"> Shirts
+            </label>
+            <label>
+                <input type="checkbox" id="pantsFilter" onchange="filterItems('pants')"> Pants
+            </label>
+        </div>
+        <div class="item-section" id="shirtsSection">
+            <div class="item" data-type="shirts" onclick="selectItem(this)">
+                <img src="Shirtttt.webp" alt="Shirt 1">
+                <div class="item-details">
+                    <h3>Shirt 1</h3>
+                    <p>$9.99</p>
+                </div>
+            </div>
+            <div class="item" data-type="shirts" onclick="selectItem(this)">
+                <img src="shirt.jpg" alt="Shirt 1">
+                <div class="item-details">
+                    <h3>Shirt 2</h3>
+                    <p>$1.99</p>
+                </div>
+            </div>
+        </div>
+        <div class="item-section" id="pantsSection">
+            <div class="item" data-type="pants" onclick="selectItem(this)">
+                <img src="download.jpeg" alt="Pants 1">
+                <div class="item-details">
+                    <h3>Pants 1</h3>
+                    <p>$19</p>
+                </div>
+            </div>
+            <div class="item" data-type="pants" onclick="selectItem(this)">
+                <img src="pantuu.jpeg" alt="Pants 1">
+                <div class="item-details">
+                    <h3>Pants 2</h3>
+                    <p>$19</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="selected-items" id="selectedItems">
+        <p>Selected items: <span id="selectedCount">0</span></p>
+        <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+    </div>
+    <script>
+        function filterItems(type) {
+            var items = document.querySelectorAll('.item');
+            items.forEach(function(item) {
+                var itemType = item.getAttribute('data-type');
+                var sectionId = itemType + 'Section';
+                var section = document.getElementById(sectionId);
+                if ((type === itemType) || (type === 'all')) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+
+        var selectedItems = [];
+
+        function selectItem(item) {
+            item.classList.toggle('selected');
+            updateSelectedCount();
+        }
+
+        function updateSelectedCount() {
+            var selectedCount = document.querySelectorAll('.item.selected').length;
+            document.getElementById('selectedCount').textContent = selectedCount;
+        }
+
+        function addToCart() {
+    selectedItems = document.querySelectorAll('.item.selected');
+    var cartItems = [];
+
+    selectedItems.forEach(function(item) {
+        var itemDetails = {
+            name: item.querySelector('.item-details h3').textContent,
+            price: item.querySelector('.item-details p').textContent,
+            image: item.querySelector('img').src
+        };
+        cartItems.push(itemDetails);
+    });
+
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+    // Redirect to the cart page
+    window.location.href = 'Cart.html';
+}
+
+    </script>
+</body>
+</html>
